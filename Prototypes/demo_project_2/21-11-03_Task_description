@@ -1,0 +1,38 @@
+#overall task
+Create a module/function in flutter for an API call to OSM Notes (= send some information on the environment from the App itself to the OSM Notes API. It will create a Note that volunteers from OSM can then work on)
+
+#UI
+Use a basic App menu with a bottom navigation bar;
+when someone clicks on one of the buttons, a pop up window appears where you can describe the situation in the environment
+-> paper Prototype available (see repo)
+-> a simple App environment is enough for now, it will be implemented in the app later on
+
+#API
+-> When you use OSM Notes everything you send to the API will be publicly available!
+-> Find a test environment for API calls in the development itself
+-> For implementation with the OSM Notes API, a list of coordinates and issues for Chemnitz will be created
+
+***FURTHER DETAILS***
+https://wiki.openstreetmap.org/wiki/API_v0.6#Map_Notes_API
+
+**info from wiki**
+Create a new note: Create: POST /api/0.6/notes
+
+Create a new note
+
+URL: https://api.openstreetmap.org/api/0.6/notes?lat=51.00&lon=0.1&text=ThisIsANote (example)
+Return type: application/xml
+
+The response will contain the XML of note.
+Parameter 	Description 	                                        Allowed values 	                    Default value
+lat 	    Specifies the latitude of the note 	                    floatingpoint number in degrees 	No default, needs to be specified
+lon 	    Specifies the longitude of the note 	                floatingpoint number in degrees 	No default, needs to be specified
+text 	    A text field with arbitrary text containing the note 	                    	            No default, needs to be present
+
+If the request is made as an authenticated user, the note is associated to that user account.
+Error codes
+
+HTTP status code 400 (Bad Request)
+    if the text field was not present
+HTTP status code 405 (Method Not Allowed)
+    If the request is not a HTTP POST request
